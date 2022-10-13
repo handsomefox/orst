@@ -1,7 +1,5 @@
 package sorts_test
 
-const log = false
-
 var (
 	intComparator     = func(i, j int) bool { return i < j }
 	exampleComparator = func(i, j exampleType) bool { return i.data < j.data }
