@@ -1,4 +1,4 @@
-package orst
+package sorter
 
 import "golang.org/x/exp/constraints"
 

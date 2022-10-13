@@ -1,6 +1,7 @@
-package orst
+package sorts
 
 import (
+	"github.com/handsomefox/orst/sorter"
 	"golang.org/x/exp/constraints"
 )
 
@@ -9,23 +10,15 @@ type (
 	SelectionAny[T any]              struct{}
 )
 
-func (b Selection[T]) Sort(s []T, cmp Comparator[T]) {
-	if cmp == nil { // if no comparison function was specified,
-		cmp = func(i, j T) bool { // use the default operator <
-			return i < j
-		}
-	}
+func (b Selection[T]) Sort(s []T, cmp sorter.Comparator[T]) {
 	selectionSortImpl(s, cmp)
 }
 
-func (b SelectionAny[T]) SortAny(s []T, cmp Comparator[T]) {
-	if cmp == nil { // return as there is no way to compare the items
-		return
-	}
+func (b SelectionAny[T]) SortAny(s []T, cmp sorter.Comparator[T]) {
 	selectionSortImpl(s, cmp)
 }
 
-func selectionSortImpl[T any](s []T, cmp Comparator[T]) {
+func selectionSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	for unsorted := range s {
 		smallest := unsorted
 		for i := unsorted + 1; i < len(s); i++ {

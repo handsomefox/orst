@@ -1,9 +1,10 @@
-package orst
+package sorts
 
 import (
 	"math/rand"
 	"time"
 
+	"github.com/handsomefox/orst/sorter"
 	"golang.org/x/exp/constraints"
 )
 
@@ -12,24 +13,15 @@ type (
 	QuicksortAny[T any]              struct{}
 )
 
-func (b Quicksort[T]) Sort(s []T, cmp Comparator[T]) {
-	if cmp == nil { // if no comparison function was specified,
-		cmp = func(i, j T) bool { // use the default operator <
-			return i < j
-		}
-	}
+func (b Quicksort[T]) Sort(s []T, cmp sorter.Comparator[T]) {
 	quicksortSortImpl(s, cmp)
 }
 
-func (b QuicksortAny[T]) SortAny(s []T, cmp Comparator[T]) {
-	if cmp == nil { // return as there is no way to compare the items
-		return
-	}
-	rand.Seed(time.Now().UnixNano())
+func (b QuicksortAny[T]) SortAny(s []T, cmp sorter.Comparator[T]) {
 	quicksortSortImpl(s, cmp)
 }
 
-func quicksortSortImpl[T any](s []T, cmp Comparator[T]) {
+func quicksortSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	if len(s) == 1 || len(s) == 0 {
 		return
 	} else if len(s) == 2 {
@@ -41,6 +33,7 @@ func quicksortSortImpl[T any](s []T, cmp Comparator[T]) {
 
 	left, right := 0, len(s)-1
 
+	rand.Seed(time.Now().UnixNano())
 	pivot := rand.Int() % len(s)
 	s[pivot], s[right] = s[right], s[pivot]
 
