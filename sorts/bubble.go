@@ -26,7 +26,7 @@ func bubbleSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 			if i == len(s)-1 {
 				continue
 			}
-			if !cmp(s[i], s[i+1]) {
+			if !cmp(&s[i], &s[i+1]) {
 				s[i], s[i+1] = s[i+1], s[i]
 				swapped = true
 			}

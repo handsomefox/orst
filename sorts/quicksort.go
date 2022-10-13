@@ -25,7 +25,7 @@ func quicksortSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	if len(s) == 1 || len(s) == 0 {
 		return
 	} else if len(s) == 2 {
-		if cmp(s[1], s[0]) {
+		if cmp(&s[1], &s[0]) {
 			s[0], s[1] = s[1], s[0]
 			return
 		}
@@ -38,7 +38,7 @@ func quicksortSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	s[pivot], s[right] = s[right], s[pivot]
 
 	for i := range s {
-		if cmp(s[i], s[right]) {
+		if cmp(&s[i], &s[right]) {
 			s[left], s[i] = s[i], s[left]
 			left++
 		}

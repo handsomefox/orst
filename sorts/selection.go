@@ -22,7 +22,7 @@ func selectionSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	for unsorted := range s {
 		smallest := unsorted
 		for i := unsorted + 1; i < len(s); i++ {
-			if cmp(s[i], s[smallest]) {
+			if cmp(&s[i], &s[smallest]) {
 				smallest = i
 			}
 		}

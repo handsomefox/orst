@@ -1,8 +1,8 @@
 package sorts_test
 
 var (
-	intComparator     = func(i, j int) bool { return i < j }
-	exampleComparator = func(i, j exampleType) bool { return i.data < j.data }
+	intComparator     = func(i, j *int) bool { return *i < *j }
+	exampleComparator = func(i, j *exampleType) bool { return i.data < j.data }
 )
 
 type exampleType struct {

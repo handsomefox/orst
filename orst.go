@@ -32,7 +32,7 @@ const (
 //
 // or with custom comparator
 //
-//	orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j < i }) // slice = (3,2,1)
+//	orst.Sort(slice, orst.BubbleSort, func(i,j *int) bool { return *j < *i }) // slice = (3,2,1)
 func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]) {
 	if s == nil {
 		return
@@ -42,8 +42,8 @@ func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]
 	}
 
 	if cmp == nil { // if no comparison function was specified,
-		cmp = func(i, j T) bool { // use the default operator <
-			return i < j
+		cmp = func(i, j *T) bool { // use the default operator <
+			return *i < *j
 		}
 	}
 
@@ -75,7 +75,7 @@ func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]
 //
 // only with custom comparator
 //
-//	orst.SortAny(slice, orst.BubbleSort, func(i,j example) bool { return i.val < j.val }) // slice = (1,2,3)
+//	orst.SortAny(slice, orst.BubbleSort, func(i,j *example) bool { return i.val < j.val }) // slice = (1,2,3)
 func SortAny[T any](s []T, algorithm Kind, cmp sorter.Comparator[T]) {
 	if s == nil {
 		return

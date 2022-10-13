@@ -21,7 +21,7 @@ func (b InsertionAny[T]) SortAny(s []T, cmp sorter.Comparator[T]) {
 func insertionSortImpl[T any](s []T, cmp sorter.Comparator[T]) {
 	for unsorted := 1; unsorted < len(s); unsorted++ {
 		i := unsorted
-		for i > 0 && cmp(s[i], s[i-1]) {
+		for i > 0 && cmp(&s[i], &s[i-1]) {
 			s[i-1], s[i] = s[i], s[i-1]
 			i--
 		}

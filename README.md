@@ -11,7 +11,7 @@ slice := []int{3,2,1}  // slice = (3,2,1)
 // with default comparator
 orst.Sort(slice, orst.BubbleSort, nil) // slice = (1,2,3)
 // or with custom comparator
-orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j < i }) // slice = (3,2,1)
+orst.Sort(slice, orst.BubbleSort, func(i,j *int) bool { return *j < *i }) // slice = (3,2,1)
 ```
 
 ### With a custom type
@@ -20,7 +20,7 @@ orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j < i }) // slice 
 type example struct { val int }
 slice := []example{{3},{2},{1}} // slice = (3,2,1)
 // only with custom comparator
-orst.SortAny(slice, orst.BubbleSort, func(i,j example) bool { return i.val < j.val }) // slice = (1,2,3)
+orst.SortAny(slice, orst.BubbleSort, func(i,j *example) bool { return i.val < j.val }) // slice = (1,2,3)
 ```
 
 ## Currently implemented sorting algorithms
