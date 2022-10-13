@@ -17,6 +17,7 @@ func Test_Sort(t *testing.T) {
 	}{
 		{sorter: orst.Bubble[int]{}, desc: "BubbleSort"},
 		{sorter: orst.Insertion[int]{}, desc: "InsertionSort"},
+		{sorter: orst.Selection[int]{}, desc: "SelectionSort"},
 	}
 
 	for _, tC := range testCases {
@@ -45,7 +46,8 @@ func Test_SortAny(t *testing.T) {
 		desc   string
 	}{
 		{sorter: orst.BubbleAny[custom]{}, desc: "BubbleSortAny"},
-		{sorter: orst.InsertionAny[custom]{}, desc: "InsertionSort"},
+		{sorter: orst.InsertionAny[custom]{}, desc: "InsertionSortAny"},
+		{sorter: orst.SelectionAny[custom]{}, desc: "SelectionSortAny"},
 	}
 
 	var cmp orst.Comparator[custom] = func(i, j custom) bool {
