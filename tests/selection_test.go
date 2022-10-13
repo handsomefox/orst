@@ -12,10 +12,7 @@ func Benchmark_SelectionSort10(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j int) bool {
-		cmpCounter++
-		return i < j
-	}
+	cmp := func(i, j int) bool { cmpCounter++; return i < j }
 	s := generateSlice(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -32,10 +29,7 @@ func Benchmark_SelectionSort100(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j int) bool {
-		cmpCounter++
-		return i < j
-	}
+	cmp := func(i, j int) bool { cmpCounter++; return i < j }
 	s := generateSlice(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -52,10 +46,7 @@ func Benchmark_SelectionSort1000(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j int) bool {
-		cmpCounter++
-		return i < j
-	}
+	cmp := func(i, j int) bool { cmpCounter++; return i < j }
 	s := generateSlice(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -72,10 +63,7 @@ func Benchmark_SelectionSortAny10(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j custom) bool {
-		cmpCounter++
-		return i.data < j.data
-	}
+	cmp := func(i, j custom) bool { cmpCounter++; return i.data < j.data }
 	s := generateSliceCustom(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -92,10 +80,7 @@ func Benchmark_SelectionSortAny100(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j custom) bool {
-		cmpCounter++
-		return i.data < j.data
-	}
+	cmp := func(i, j custom) bool { cmpCounter++; return i.data < j.data }
 	s := generateSliceCustom(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -112,10 +97,7 @@ func Benchmark_SelectionSortAny1000(b *testing.B) {
 
 	b.StopTimer()
 	cmpCounter := 0
-	cmp := func(i, j custom) bool {
-		cmpCounter++
-		return i.data < j.data
-	}
+	cmp := func(i, j custom) bool { cmpCounter++; return i.data < j.data }
 	s := generateSliceCustom(sliceSize, true)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {

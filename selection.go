@@ -26,7 +26,7 @@ func (b SelectionAny[T]) SortAny(s []T, cmp Comparator[T]) {
 }
 
 func selectionSortImpl[T any](s []T, cmp Comparator[T]) {
-	for unsorted := 0; unsorted < len(s); unsorted++ {
+	for unsorted := range s {
 		smallest := unsorted
 		for i := unsorted + 1; i < len(s); i++ {
 			if cmp(s[i], s[smallest]) {

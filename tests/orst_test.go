@@ -18,6 +18,7 @@ func Test_Sort(t *testing.T) {
 		{sorter: orst.Bubble[int]{}, desc: "BubbleSort"},
 		{sorter: orst.Insertion[int]{}, desc: "InsertionSort"},
 		{sorter: orst.Selection[int]{}, desc: "SelectionSort"},
+		{sorter: orst.Quicksort[int]{}, desc: "Quicksort"},
 	}
 
 	for _, tC := range testCases {
@@ -25,7 +26,7 @@ func Test_Sort(t *testing.T) {
 		t.Run(tC.desc, func(t *testing.T) {
 			t.Parallel()
 
-			s, s2 := generateSlice(250, true), generateSlice(250, false)
+			s, s2 := generateSlice(1000, true), generateSlice(1000, false)
 
 			tC.sorter.Sort(s, nil)
 
@@ -48,18 +49,17 @@ func Test_SortAny(t *testing.T) {
 		{sorter: orst.BubbleAny[custom]{}, desc: "BubbleSortAny"},
 		{sorter: orst.InsertionAny[custom]{}, desc: "InsertionSortAny"},
 		{sorter: orst.SelectionAny[custom]{}, desc: "SelectionSortAny"},
+		{sorter: orst.QuicksortAny[custom]{}, desc: "QuicksortAny"},
 	}
 
-	var cmp orst.Comparator[custom] = func(i, j custom) bool {
-		return i.data < j.data
-	}
+	var cmp orst.Comparator[custom] = func(i, j custom) bool { return i.data < j.data }
 
 	for _, tC := range testCases {
 		tC := tC
 		t.Run(tC.desc, func(t *testing.T) {
 			t.Parallel()
 
-			s, s2 := generateSliceCustom(250, true), generateSliceCustom(250, false)
+			s, s2 := generateSliceCustom(1000, true), generateSliceCustom(1000, false)
 
 			tC.sorter.SortAny(s, cmp)
 

@@ -6,9 +6,9 @@ import (
 	"github.com/handsomefox/orst"
 )
 
-func Benchmark_InsertionSort10(b *testing.B) {
+func Benchmark_Quicksort10(b *testing.B) {
 	const sliceSize = 10
-	sorter := orst.Insertion[int]{}
+	sorter := orst.Quicksort[int]{}
 
 	b.StopTimer()
 	cmpCounter := 0
@@ -23,9 +23,9 @@ func Benchmark_InsertionSort10(b *testing.B) {
 	}
 }
 
-func Benchmark_InsertionSort100(b *testing.B) {
+func Benchmark_Quicksort100(b *testing.B) {
 	const sliceSize = 100
-	sorter := orst.Insertion[int]{}
+	sorter := orst.Quicksort[int]{}
 
 	b.StopTimer()
 	cmpCounter := 0
@@ -40,9 +40,9 @@ func Benchmark_InsertionSort100(b *testing.B) {
 	}
 }
 
-func Benchmark_InsertionSort1000(b *testing.B) {
+func Benchmark_Quicksort1000(b *testing.B) {
 	const sliceSize = 1_000
-	sorter := orst.Insertion[int]{}
+	sorter := orst.Quicksort[int]{}
 
 	b.StopTimer()
 	cmpCounter := 0
@@ -57,9 +57,9 @@ func Benchmark_InsertionSort1000(b *testing.B) {
 	}
 }
 
-func Benchmark_InsertionSortAny10(b *testing.B) {
+func Benchmark_QuicksortAny10(b *testing.B) {
 	const sliceSize = 10
-	sorter := orst.InsertionAny[custom]{}
+	sorter := orst.QuicksortAny[custom]{}
 
 	b.StopTimer()
 	cmpCounter := 0
@@ -74,9 +74,9 @@ func Benchmark_InsertionSortAny10(b *testing.B) {
 	}
 }
 
-func Benchmark_InsertionSortAny100(b *testing.B) {
+func Benchmark_QuicksortAny100(b *testing.B) {
 	const sliceSize = 100
-	sorter := orst.InsertionAny[custom]{}
+	sorter := orst.QuicksortAny[custom]{}
 
 	b.StopTimer()
 	cmpCounter := 0
@@ -91,9 +91,9 @@ func Benchmark_InsertionSortAny100(b *testing.B) {
 	}
 }
 
-func Benchmark_InsertionSortAny1000(b *testing.B) {
+func Benchmark_QuicksortAny1000(b *testing.B) {
 	const sliceSize = 1_000
-	sorter := orst.InsertionAny[custom]{}
+	sorter := orst.QuicksortAny[custom]{}
 
 	b.StopTimer()
 	cmpCounter := 0

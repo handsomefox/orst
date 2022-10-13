@@ -27,7 +27,7 @@ func bubbleSortImpl[T any](s []T, cmp Comparator[T]) {
 	swapped := true
 	for swapped {
 		swapped = false
-		for i := 0; i < len(s); i++ {
+		for i := range s {
 			if i == len(s)-1 {
 				continue
 			}
