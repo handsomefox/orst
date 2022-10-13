@@ -25,11 +25,14 @@ const (
 // # Example
 //
 //	slice := []int{3,2,1} // slice = (3,2,1)
-//	orst.Sort[int](slice, Bubblesort, nil) // slice = (1,2,3)
+//
+// with defalt comparator
+//
+//	orst.Sort(slice, orst.BubbleSort, nil) // slice = (1,2,3)
 //
 // or with custom comparator
 //
-//	orst.Sort[int](slice, Bubblesort, func(i,j int) bool { return j > i })
+//	orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j > i })
 func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]) {
 	if s == nil {
 		return
@@ -69,7 +72,10 @@ func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]
 //
 //	type example struct { val int }
 //	slice := []example{{3},{2},{1}} // slice = (3,2,1)
-//	orst.SortAny[example](slice, Bubblesort, func(i,j example) bool { return i.val < j.val }) // slice = (1,2,3)
+//
+// only with custom comparator
+//
+//	orst.SortAny(slice, orst.BubbleSort, func(i,j example) bool { return i.val < j.val }) // slice = (1,2,3)
 func SortAny[T any](s []T, algorithm Kind, cmp sorter.Comparator[T]) {
 	if s == nil {
 		return
