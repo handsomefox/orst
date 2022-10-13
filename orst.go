@@ -32,7 +32,7 @@ const (
 //
 // or with custom comparator
 //
-//	orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j > i })
+//	orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j < i }) // slice = (3,2,1)
 func Sort[T constraints.Ordered](s []T, algorithm Kind, cmp sorter.Comparator[T]) {
 	if s == nil {
 		return

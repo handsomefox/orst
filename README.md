@@ -11,7 +11,7 @@ slice := []int{3,2,1}  // slice = (3,2,1)
 // with default comparator
 orst.Sort(slice, orst.BubbleSort, nil) // slice = (1,2,3)
 // or with custom comparator
-orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j > i }) // slice = (1,2,3)
+orst.Sort(slice, orst.BubbleSort, func(i,j int) bool { return j < i }) // slice = (3,2,1)
 ```
 
 ### With a custom type
